@@ -1,4 +1,5 @@
 import type { ICallis } from '../../types'
+import { mountCallis, toggleCallis } from '../mount'
 
 export const initCallis = (): void => {
     if (window.__callis) {
@@ -6,14 +7,12 @@ export const initCallis = (): void => {
         return
     }
 
+    mountCallis()
+
     const callis: ICallis = {
         version: '0.1.0',
-        toggle: () => {
-            // TASK-006: mount/unmount Vue sidebar in Shadow DOM
-        },
-        start: (_tourId: string) => {
-            // TASK-006: programmatic tour start
-        },
+        toggle: toggleCallis,
+        start: (_tourId: string) => {},
     }
 
     window.__callis = callis

@@ -1,9 +1,15 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { initCallis } from './index'
 
+vi.mock('../mount', () => ({
+    mountCallis: vi.fn(),
+    toggleCallis: vi.fn(),
+}))
+
 describe('initCallis', () => {
     beforeEach(() => {
         delete (window as Window & { __callis?: unknown }).__callis
+        vi.clearAllMocks()
     })
 
     it('registers __callis on window', () => {
