@@ -5,6 +5,7 @@ import { useSelectionMode } from './composables/useSelectionMode'
 import { useDraftSave } from './composables/useDraftSave'
 import CallisSidebar from './components/CallisSidebar.vue'
 import CallisTooltipEditor from './components/CallisTooltipEditor.vue'
+import CallisPreview from './components/CallisPreview.vue'
 
 const store = useBuilderStore()
 const { start: startSelection, stop: stopSelection } = useSelectionMode()
@@ -24,5 +25,6 @@ watch(
 <div v-if="store.isOpen" id="callis-shell">
     <CallisSidebar />
     <CallisTooltipEditor v-if="store.activeStepId" />
+    <CallisPreview v-if="store.activeStepId" />
 </div>
 </template>
