@@ -1,0 +1,149 @@
+<script setup lang="ts">
+const navLinks = [
+    { label: 'Installation', to: '/install' },
+    { label: 'Documentation', to: '/docs' },
+    { label: 'Adapters', to: '/adapters' },
+]
+</script>
+
+<template>
+<div class="site-layout">
+    <header class="site-header">
+        <div class="site-container site-header__inner">
+            <NuxtLink to="/" class="site-logo">Callis</NuxtLink>
+            <nav class="site-nav">
+                <NuxtLink
+                    v-for="link in navLinks"
+                    :key="link.to"
+                    :to="link.to"
+                    class="site-nav__link"
+                >{{ link.label }}</NuxtLink>
+            </nav>
+            <NuxtLink to="/install" class="site-header__cta">
+                Installer le bookmarklet
+            </NuxtLink>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <slot />
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-container">
+            <p>Callis — MIT License — <a href="https://github.com/callis-app/callis" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+</div>
+</template>
+
+<style>
+:root {
+    --callis-dark: #1a1a2e;
+    --callis-green: #5dcaa5;
+    --callis-green-dark: #4db896;
+    --callis-text: #2d2d44;
+    --callis-muted: #6b7280;
+    --callis-border: #e5e7eb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--callis-text);
+    background: #fff;
+    line-height: 1.6;
+}
+
+.site-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.site-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--callis-border);
+    z-index: 100;
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 60px;
+}
+
+.site-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--callis-dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.site-nav {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.site-nav__link {
+    font-size: 14px;
+    color: var(--callis-muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.site-nav__link:hover,
+.site-nav__link.router-link-active {
+    color: var(--callis-dark);
+    background: rgba(26, 26, 46, 0.06);
+}
+
+.site-header__cta {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    background: var(--callis-dark);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-header__cta:hover {
+    background: #2d2d50;
+}
+
+.site-main {
+    flex: 1;
+}
+
+.site-footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--callis-border);
+    font-size: 13px;
+    color: var(--callis-muted);
+}
+
+.site-footer a {
+    color: var(--callis-muted);
+}
+
+@media (max-width: 640px) {
+    .site-nav { display: none; }
+    .site-header__cta { display: none; }
+}
+</style>
