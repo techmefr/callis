@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callis — Test Vue 3 SPA</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 0; }
+        nav { background: #1a1a2e; padding: 16px 24px; display: flex; gap: 16px; }
+        nav button { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 14px; padding: 6px 12px; border-radius: 4px; }
+        nav button.active { color: #fff; background: rgba(255,255,255,0.1); }
+        main { padding: 40px 24px; }
+        h2 { margin: 0 0 24px; }
+    </style>
+</head>
+<body data-role="user">
+    <div id="app">
+        <nav>
+            <button data-callis="nav-dashboard" :class="{ active: route === 'dashboard' }" @click="navigate('dashboard')">Dashboard</button>
+            <button data-callis="nav-projects" :class="{ active: route === 'projects' }" @click="navigate('projects')">Projets</button>
+            <button data-callis="nav-profile" :class="{ active: route === 'profile' }" @click="navigate('profile')">Profil</button>
+        </nav>
+        <main>
+            <template v-if="route === 'dashboard'">
+                <h2 data-callis="page-title-dashboard">Dashboard</h2>
+                <p>Contenu du dashboard. Callis doit détecter la navigation SPA.</p>
+                <button data-callis="btn-new-project" style="padding: 10px 20px; background: #5dcaa5; border: none; border-radius: 6px; cursor: pointer;">
+                    Nouveau projet
+                </button>
+            </template>
+            <template v-else-if="route === 'projects'">
+                <h2 data-callis="page-title-projects">Projets</h2>
+                <p>Liste des projets. Route : /projects</p>
+            </template>
+            <template v-else>
+                <h2 data-callis="page-title-profile">Profil utilisateur</h2>
+                <p>Page de profil. Route : /profile</p>
+            </template>
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script>
+        const { createApp, ref } = Vue
+        createApp({
+            setup() {
+                const route = ref('dashboard')
+                function navigate(page) {
+                    route.value = page
+                    history.pushState({}, '', '/' + page)
+                    document.title = 'Callis Test — ' + page
+                }
+                return { route, navigate }
+            }
+        }).mount('#app')
+    </script>
+    <script type="module">
+        const s = document.createElement('script')
+        s.src = '../dist/callis.js'
+        document.head.appendChild(s)
+        s.onload = () => {
+            setTimeout(() => window.__callis?.toggle(), 300)
+        }
+    </script>
+</body>
+</html>
