@@ -116,6 +116,10 @@ export const useBuilderStore = defineStore('builder', () => {
         tour.steps.splice(toIndex, 0, step)
     }
 
+    function updateTheme(updates: Partial<CallisConfig['theme']>): void {
+        Object.assign(config.value.theme, updates)
+    }
+
     function loadConfig(loaded: CallisConfig): void {
         config.value = loaded
     }
@@ -139,6 +143,7 @@ export const useBuilderStore = defineStore('builder', () => {
         updateStep,
         removeStep,
         reorderSteps,
+        updateTheme,
         loadConfig,
     }
 })
