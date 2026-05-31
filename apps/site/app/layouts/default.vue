@@ -38,22 +38,27 @@ const navLinks = [
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-    --callis-dark: #1a1a2e;
-    --callis-green: #5dcaa5;
-    --callis-green-dark: #4db896;
-    --callis-text: #2d2d44;
-    --callis-muted: #6b7280;
-    --callis-border: #e5e7eb;
+    --callis-dark: oklch(15% 0.028 268);
+    --callis-green: oklch(74% 0.10 162);
+    --callis-green-dark: oklch(67% 0.10 162);
+    --callis-text: oklch(26% 0.022 270);
+    --callis-muted: oklch(52% 0.012 265);
+    --callis-border: oklch(87% 0.008 200);
+    --callis-bg: oklch(98.5% 0.004 200);
+    --callis-surface: oklch(96.5% 0.007 215);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Figtree', system-ui, sans-serif;
     color: var(--callis-text);
-    background: #fff;
+    background: var(--callis-bg);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 .site-container {
