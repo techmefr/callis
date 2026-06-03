@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+    devServer: { port: 4040 },
     modules: ['@nuxt/ui'],
     compatibilityDate: '2025-01-01',
     future: {
