@@ -8,6 +8,7 @@ export const initCallis = (): void => {
     }
 
     mountCallis()
+    toggleCallis()
 
     const callis: ICallis = {
         version: '0.1.0',

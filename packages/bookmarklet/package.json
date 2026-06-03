@@ -8,7 +8,9 @@
         "build": "vite build",
         "test": "vitest run",
         "test:watch": "vitest",
-        "bookmarklet": "tsx scripts/print-bookmarklet.ts"
+        "bookmarklet": "tsx scripts/print-bookmarklet.ts",
+        "e2e": "playwright test",
+        "e2e:headed": "playwright test --headed"
     },
     "dependencies": {
         "@callis/core": "workspace:*",
@@ -17,6 +19,7 @@
         "vue": "^3.5.0"
     },
     "devDependencies": {
+        "@playwright/test": "^1.60.0",
         "@vitejs/plugin-vue": "^5.0.0",
         "@vue/test-utils": "^2.4.0",
         "tsx": "^4.0.0",

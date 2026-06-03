@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callis — Dev</title>
+    <style>
+        body { font-family: sans-serif; max-width: 960px; margin: 0 auto; padding: 40px 20px; background: #f9f9f9; }
+        header { background: #fff; border: 1px solid #e0e0e0; padding: 20px 28px; border-radius: 10px; margin-bottom: 32px; display: flex; align-items: center; gap: 20px; }
+        nav a { margin-right: 16px; color: #1a1a2e; text-decoration: none; font-weight: 500; font-size: 14px; }
+        .hero { background: #1a1a2e; color: #fff; padding: 56px 48px; border-radius: 12px; margin-bottom: 28px; }
+        .hero h1 { margin: 0 0 10px; font-size: 28px; }
+        .hero p { opacity: 0.7; margin: 0; font-size: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+        .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; }
+        .card h3 { margin: 0 0 8px; font-size: 15px; color: #1a1a2e; }
+        .card p { margin: 0; font-size: 13px; color: #6b7280; }
+        .form-section { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 28px; margin-bottom: 28px; }
+        .form-section h2 { margin: 0 0 20px; font-size: 18px; }
+        .field { margin-bottom: 16px; }
+        label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+        input, textarea { width: 100%; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
+        .btn { padding: 10px 20px; background: #1a1a2e; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .list-section { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 28px; }
+        .list-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .list-item:last-child { border-bottom: none; }
+        footer { padding: 28px 0 0; color: #aaa; font-size: 12px; }
+    </style>
+</head>
+<body data-role="admin" data-plan="pro">
+
+    <header>
+        <nav>
+            <a href="#" data-callis="nav-home">Accueil</a>
+            <a href="#" data-callis="nav-projects">Projets</a>
+            <a href="#" data-callis="nav-team">Équipe</a>
+            <a href="#" data-callis="nav-settings">Paramètres</a>
+        </nav>
+        <button class="btn" data-callis="btn-create-project" style="margin-left:auto">Créer un projet</button>
+    </header>
+
+    <section class="hero" data-callis="hero-section">
+        <h1>Dashboard principal</h1>
+        <p>Bienvenue dans l'application de test Callis. Cliquez sur des éléments pour créer des steps.</p>
+    </section>
+
+    <div class="grid">
+        <div class="card" data-callis="card-stats-projects">
+            <h3>Projets actifs</h3>
+            <p>12 projets en cours</p>
+        </div>
+        <div class="card" data-callis="card-stats-users">
+            <h3>Utilisateurs</h3>
+            <p>48 membres</p>
+        </div>
+        <div class="card" data-callis="card-stats-tasks">
+            <h3>Tâches ouvertes</h3>
+            <p>7 tâches en attente</p>
+        </div>
+    </div>
+
+    <section class="form-section">
+        <h2 data-callis="form-title">Nouveau projet</h2>
+        <div class="field">
+            <label data-callis="field-name-label">Nom du projet</label>
+            <input type="text" placeholder="Ex : Refonte onboarding" data-callis="input-project-name" />
+        </div>
+        <div class="field">
+            <label>Description</label>
+            <textarea rows="3" placeholder="Décrivez le projet..." data-callis="input-project-desc"></textarea>
+        </div>
+        <button class="btn" data-callis="btn-submit-project">Créer le projet</button>
+    </section>
+
+    <section class="list-section">
+        <h2 style="margin:0 0 16px;font-size:16px;" data-callis="list-header">Projets récents</h2>
+        <div class="list-item" data-callis="list-item-1">
+            <strong>Onboarding v2</strong>
+            <span style="color:#6b7280;font-size:13px;margin-left:auto">En cours</span>
+        </div>
+        <div class="list-item" data-callis="list-item-2">
+            <strong>Dashboard analytics</strong>
+            <span style="color:#6b7280;font-size:13px;margin-left:auto">Planifié</span>
+        </div>
+        <div class="list-item" data-callis="list-item-3">
+            <strong>Migration v3</strong>
+            <span style="color:#16a34a;font-size:13px;margin-left:auto">Terminé</span>
+        </div>
+    </section>
+
+    <footer>
+        Page de test Callis — dev only
+    </footer>
+
+    <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
